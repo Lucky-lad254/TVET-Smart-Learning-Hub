@@ -1,19 +1,38 @@
+"""Forms for user authentication and registration."""
+
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SelectField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationError
+from wtforms import StringField, PasswordField, SelectField, SubmitField
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
 from app.models import User
+
 
 class LoginForm(FlaskForm):
     """Login form."""
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
-    remember_me = BooleanField('Remember Me')
+    email = StringField('Email', validators=[
+        DataRequired(),
+        Email()
+    ])
+    password = PasswordField('Password', validators=[
+        DataRequired(),
+        Length(min=6)
+    ])
     submit = SubmitField('Login')
 
+
 class RegistrationForm(FlaskForm):
-    """Registration form for new users."""
-    fullname = StringField('Full Name', validators=[DataRequired(), Length(min=2, max=100)])
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    """Registration form."""
+    fullname = StringField('Full Name', validators=[
+        DataRequired(),
+        Length(min=2, max=128)
+    ])
+    email = StringField('Email', validators=[
+        DataRequired(),
+        Email()
+    ])
+    role = SelectField('Role', choices=[
+        ('Teacher', 'Teacher'),
+        ('Student', 'Student')
+    ], validators=[DataRequired()])
     password = PasswordField('Password', validators=[
         DataRequired(),
         Length(min=8, message='Password must be at least 8 characters long')
@@ -22,26 +41,20 @@ class RegistrationForm(FlaskForm):
         DataRequired(),
         EqualTo('password', message='Passwords must match')
     ])
-    role = SelectField('Register as', choices=[
-        ('Teacher', 'Teacher'),
-        ('Student', 'Student')
-    ], validators=[DataRequired()])
     submit = SubmitField('Register')
     
     def validate_email(self, field):
-        """Check if email already exists."""
+        """Check if email is already registered."""
         if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Email already registered. Please use a different email or login.')
+            raise ValidationError('Email is already registered. Please use a different one.')
 
-class UpdateProfileForm(FlaskForm):
-    """Form to update user profile."""
-    fullname = StringField('Full Name', validators=[DataRequired(), Length(min=2, max=100)])
-    bio = StringField('Bio', validators=[Length(max=500)])
-    submit = SubmitField('Update Profile')
 
 class ChangePasswordForm(FlaskForm):
-    """Form to change password."""
-    old_password = PasswordField('Current Password', validators=[DataRequired()])
+    """Change password form."""
+    old_password = PasswordField('Current Password', validators=[
+        DataRequired(),
+        Length(min=6)
+    ])
     new_password = PasswordField('New Password', validators=[
         DataRequired(),
         Length(min=8, message='Password must be at least 8 characters long')

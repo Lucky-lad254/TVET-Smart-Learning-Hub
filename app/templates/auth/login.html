@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Login - TVET Smart Learning Hub{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="card" style="box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div class="card-header" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 20px; text-align: center;">
+                <h3>🔐 User Login</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" novalidate>
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="mb-3">
+                        {{ form.email.label }}
+                        {% if form.email.errors %}
+                            {{ form.email(class="form-control is-invalid") }}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.email.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-control", placeholder="your@email.com") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.password.label }}
+                        {% if form.password.errors %}
+                            {{ form.password(class="form-control is-invalid") }}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.password.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.password(class="form-control", placeholder="Password") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.submit(class="btn btn-primary w-100") }}
+                    </div>
+                </form>
+
+                <div class="alert alert-info mt-3" role="alert">
+                    <strong>Demo Accounts:</strong><br>
+                    Admin: admin@tvet.edu / admin123<br>
+                    Teacher: teacher@tvet.edu / teacher123<br>
+                    Student: student@tvet.edu / student123
+                </div>
+
+                <hr>
+                <p class="text-center">
+                    Don't have an account? <a href="{{ url_for('auth.register') }}">Register here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
