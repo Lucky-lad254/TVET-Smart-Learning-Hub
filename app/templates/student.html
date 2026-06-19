@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Dashboard - TVET Smart Learning Hub{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4"><i class="fas fa-graduation-cap"></i> Student Dashboard</h1>
+    <p class="lead text-muted">Welcome, <strong>{{ current_user.fullname }}</strong>! Ready to learn?</p>
+    
+    <!-- Progress Overview -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-light">
+                <div class="card-body text-center">
+                    <h6 class="card-title text-muted">Courses Enrolled</h6>
+                    <h2 class="display-6 text-primary">0</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-light">
+                <div class="card-body text-center">
+                    <h6 class="card-title text-muted">Assignments Completed</h6>
+                    <h2 class="display-6 text-success">0</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-light">
+                <div class="card-body text-center">
+                    <h6 class="card-title text-muted">Quizzes Taken</h6>
+                    <h2 class="display-6 text-info">0</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-light">
+                <div class="card-body text-center">
+                    <h6 class="card-title text-muted">Average Grade</h6>
+                    <h2 class="display-6 text-warning">-</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Learning Actions -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Browse Materials</h5>
+                    <p class="card-text text-muted small">Access course notes and resources</p>
+                    <button class="btn btn-sm btn-primary" disabled>Coming in Phase 2</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-download fa-3x text-success mb-3"></i>
+                    <h5 class="card-title">Download Notes</h5>
+                    <p class="card-text text-muted small">Save materials for offline reading</p>
+                    <button class="btn btn-sm btn-success" disabled>Coming in Phase 2</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-edit fa-3x text-info mb-3"></i>
+                    <h5 class="card-title">Submit Work</h5>
+                    <p class="card-text text-muted small">Turn in assignments and projects</p>
+                    <button class="btn btn-sm btn-info" disabled>Coming in Phase 4</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-robot fa-3x text-warning mb-3"></i>
+                    <h5 class="card-title">Ask AI Tutor</h5>
+                    <p class="card-text text-muted small">Get instant homework help</p>
+                    <button class="btn btn-sm btn-warning" disabled>Coming in Phase 6</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Courses Section -->
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="fas fa-graduation-cap"></i> My Enrolled Courses</h5>
+        </div>
+        <div class="card-body">
+            <p class="text-muted">You haven't enrolled in any courses yet. Courses will be available in Phase 2.</p>
+        </div>
+    </div>
+    
+    <!-- Learning Path -->
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-secondary text-white">
+            <h5 class="mb-0"><i class="fas fa-lightbulb"></i> Your Learning Path</h5>
+        </div>
+        <div class="card-body">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker bg-success">✓</div>
+                    <div class="timeline-content">
+                        <h6>Account Created</h6>
+                        <p class="text-muted small">You've successfully registered as a student.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker bg-secondary">2</div>
+                    <div class="timeline-content">
+                        <h6>Enroll in Courses (Phase 2)</h6>
+                        <p class="text-muted small">Browse available courses and enroll in your department.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker bg-secondary">3</div>
+                    <div class="timeline-content">
+                        <h6>Access Learning Materials (Phase 2)</h6>
+                        <p class="text-muted small">Download notes, videos, and study guides.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker bg-secondary">4</div>
+                    <div class="timeline-content">
+                        <h6>Complete Assessments (Phase 4)</h6>
+                        <p class="text-muted small">Take quizzes and submit assignments.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker bg-secondary">5</div>
+                    <div class="timeline-content">
+                        <h6>Get Certified (Phase 5)</h6>
+                        <p class="text-muted small">Earn certificates upon course completion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

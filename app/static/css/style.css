@@ -1,0 +1,259 @@
+/* ================================
+   TVET Smart Learning Hub - Styles
+   ================================ */
+
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+/* Cards */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.hover-shadow:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Hero Section */
+.bg-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Forms */
+.form-control, .form-select {
+    border-color: #dee2e6;
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Dashboard Cards */
+.bg-primary, .bg-success, .bg-info, .bg-warning {
+    background: linear-gradient(135deg, var(--color-start) 0%, var(--color-end) 100%) !important;
+}
+
+.bg-primary {
+    --color-start: #0d6efd;
+    --color-end: #0056b3;
+}
+
+.bg-success {
+    --color-start: #198754;
+    --color-end: #155724;
+}
+
+.bg-info {
+    --color-start: #0dcaf0;
+    --color-end: #088cc9;
+}
+
+.bg-warning {
+    --color-start: #ffc107;
+    --color-end: #ff9800;
+}
+
+/* Tables */
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    border-bottom: 2px solid #dee2e6;
+    background-color: #f8f9fa;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: #495057;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Badges */
+.badge {
+    padding: 0.5rem 0.75rem;
+    font-weight: 500;
+}
+
+/* Alerts */
+.alert {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.alert-info {
+    background-color: #cfe2ff;
+    color: #084298;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    border-top: 1px solid #dee2e6;
+}
+
+footer a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #fff !important;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: #212529;
+}
+
+.lead {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+/* Login/Register Forms */
+.card.shadow-lg {
+    border: none;
+    border-radius: 1rem;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.timeline-marker {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+}
+
+.timeline-content {
+    flex-grow: 1;
+}
+
+.timeline-content h6 {
+    margin-bottom: 0.5rem;
+    color: #212529;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .display-6 {
+        font-size: 1.5rem;
+    }
+    
+    .card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Sticky Top */
+.sticky-top {
+    z-index: 100;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #0d6efd;
+}

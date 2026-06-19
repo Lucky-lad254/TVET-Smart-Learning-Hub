@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Departments - TVET Smart Learning Hub{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <h1 class="mb-4">TVET Departments</h1>
+    <p class="lead text-muted">Browse all available departments and their courses.</p>
+    
+    <div class="row g-4">
+        {% for dept in departments %}
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100 hover-shadow">
+                <div class="card-body text-center">
+                    <div class="display-4 mb-3">{{ dept.icon }}</div>
+                    <h5 class="card-title">{{ dept.name }}</h5>
+                    <p class="card-text text-muted">Explore courses in this department.</p>
+                    <button class="btn btn-primary btn-sm" disabled>View Courses (Phase 2)</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="alert alert-info mt-5" role="alert">
+        <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Coming Soon</h5>
+        <p class="mb-0">Detailed course listings and enrollment will be available in Phase 2. More departments can be added by administrators.</p>
+    </div>
+</div>
+{% endblock %}

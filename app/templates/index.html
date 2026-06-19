@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - TVET Smart Learning Hub{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-0">
+    <!-- Hero Section -->
+    <div class="bg-primary text-white py-5">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Welcome to TVET Smart Learning Hub</h1>
+            <p class="lead">Empowering TVET education with intelligent learning management</p>
+            
+            {% if current_user.is_authenticated %}
+            <div class="mt-4">
+                {% if current_user.is_admin() %}
+                <a href="{{ url_for('dashboard.admin') }}" class="btn btn-light btn-lg"><i class="fas fa-tachometer-alt"></i> Go to Dashboard</a>
+                {% elif current_user.is_teacher() %}
+                <a href="{{ url_for('dashboard.teacher') }}" class="btn btn-light btn-lg"><i class="fas fa-tachometer-alt"></i> Go to Dashboard</a>
+                {% else %}
+                <a href="{{ url_for('dashboard.student') }}" class="btn btn-light btn-lg"><i class="fas fa-tachometer-alt"></i> Go to Dashboard</a>
+                {% endif %}
+            </div>
+            {% else %}
+            <div class="mt-4">
+                <a href="{{ url_for('auth.login') }}" class="btn btn-light btn-lg me-2"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="{{ url_for('auth.register') }}" class="btn btn-outline-light btn-lg"><i class="fas fa-user-plus"></i> Register</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Features Section -->
+    <div class="container py-5">
+        <h2 class="text-center mb-5">Key Features</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card text-center border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Learning Materials</h5>
+                        <p class="card-text">Organize and access comprehensive learning resources by course and module.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-search fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Smart Search</h5>
+                        <p class="card-text">Find resources quickly with full-text search and intelligent filtering.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-tasks fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Assignments & Quizzes</h5>
+                        <p class="card-text">Create, manage, and grade assignments and quizzes with ease.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-robot fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">AI Tutor</h5>
+                        <p class="card-text">Get instant help from an intelligent AI assistant powered by advanced models.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="bg-light py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <h3 class="display-6 text-primary">20+</h3>
+                    <p class="text-muted">TVET Departments</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="display-6 text-primary">100%</h3>
+                    <p class="text-muted">Open Source</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="display-6 text-primary">24/7</h3>
+                    <p class="text-muted">Access Learning</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

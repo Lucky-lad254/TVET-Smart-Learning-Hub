@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}Teacher Dashboard - TVET Smart Learning Hub{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4"><i class="fas fa-chalkboard-user"></i> Teacher Dashboard</h1>
+    <p class="lead text-muted">Welcome, <strong>{{ current_user.fullname }}</strong>!</p>
+    
+    <!-- Quick Actions -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-file-upload fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Upload Materials</h5>
+                    <p class="card-text text-muted small">Share PDFs, documents, videos</p>
+                    <button class="btn btn-sm btn-primary" disabled>Coming in Phase 2</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-tasks fa-3x text-success mb-3"></i>
+                    <h5 class="card-title">Create Assignment</h5>
+                    <p class="card-text text-muted small">Set tasks for students</p>
+                    <button class="btn btn-sm btn-success" disabled>Coming in Phase 4</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-quiz fa-3x text-info mb-3"></i>
+                    <h5 class="card-title">Create Quiz</h5>
+                    <p class="card-text text-muted small">Generate assessments</p>
+                    <button class="btn btn-sm btn-info" disabled>Coming in Phase 4</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-chart-bar fa-3x text-warning mb-3"></i>
+                    <h5 class="card-title">View Reports</h5>
+                    <p class="card-text text-muted small">Student analytics</p>
+                    <button class="btn btn-sm btn-warning" disabled>Coming in Phase 7</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Teaching Tools -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-book"></i> My Courses</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">You haven't created any courses yet. Coming in Phase 2.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-student"></i> My Students</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">No enrolled students yet. Coming in Phase 2.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Phase Roadmap -->
+    <div class="card border-0 shadow-sm mt-4">
+        <div class="card-header bg-secondary text-white">
+            <h5 class="mb-0"><i class="fas fa-calendar"></i> What's Coming Next</h5>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Phase 2:</strong> Upload learning materials (PDF, DOCX, videos)</li>
+                <li class="list-group-item"><strong>Phase 3:</strong> Intelligent search with full-text indexing</li>
+                <li class="list-group-item"><strong>Phase 4:</strong> Create quizzes, assignments, and grade submissions</li>
+                <li class="list-group-item"><strong>Phase 5:</strong> Student progress tracking and certificates</li>
+                <li class="list-group-item"><strong>Phase 6:</strong> AI tutor and automatic quiz generation</li>
+                <li class="list-group-item"><strong>Phase 7:</strong> Advanced analytics and reporting</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

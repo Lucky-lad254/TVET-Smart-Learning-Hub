@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block title %}About - TVET Smart Learning Hub{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <h1 class="mb-4">About TVET Smart Learning Hub</h1>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Our Mission</h3>
+            <p>To empower TVET (Technical and Vocational Education and Training) institutions and learners with an intelligent, modern learning management system that makes quality education accessible, engaging, and effective.</p>
+            
+            <h3 class="mt-4">What We Offer</h3>
+            <ul>
+                <li><strong>Comprehensive LMS:</strong> A complete platform for managing courses, materials, assessments, and student progress.</li>
+                <li><strong>Intelligent Search:</strong> Find learning resources quickly with advanced search capabilities.</li>
+                <li><strong>AI-Powered Learning:</strong> Get personalized help from an intelligent AI tutor.</li>
+                <li><strong>Mobile-Friendly:</strong> Access learning materials from any device, anywhere, anytime.</li>
+                <li><strong>Open Source:</strong> Built with open standards and freely available for TVET institutions.</li>
+            </ul>
+            
+            <h3 class="mt-4">Supported TVET Departments</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul>
+                        <li>Civil Engineering</li>
+                        <li>Building Technology</li>
+                        <li>Mechanical Engineering</li>
+                        <li>Electrical Engineering</li>
+                        <li>Automotive Engineering</li>
+                        <li>Software Development</li>
+                        <li>ICT & Networking</li>
+                        <li>Cybersecurity</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul>
+                        <li>Data Science</li>
+                        <li>Business Management</li>
+                        <li>Accounting</li>
+                        <li>Supply Chain Management</li>
+                        <li>Hospitality & Tourism</li>
+                        <li>Agriculture</li>
+                        <li>Fashion Design</li>
+                        <li>Food Production</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3 class="mt-4">Technology Stack</h3>
+            <p>Built with modern, reliable technologies:</p>
+            <ul>
+                <li><strong>Backend:</strong> Python 3.12 with Flask framework</li>
+                <li><strong>Database:</strong> SQLite (development), PostgreSQL-ready (production)</li>
+                <li><strong>Frontend:</strong> HTML5, CSS3, Bootstrap 5, JavaScript</li>
+                <li><strong>Authentication:</strong> Secure password hashing with role-based access control</li>
+                <li><strong>Search:</strong> Full-text indexing with OCR support</li>
+                <li><strong>AI:</strong> Integrated with OpenAI-compatible APIs</li>
+            </ul>
+            
+            <h3 class="mt-4">Development Phases</h3>
+            <div class="accordion" id="phasesAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingPhase1">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhase1">
+                            Phase 1: Project Foundation ✓
+                        </button>
+                    </h2>
+                    <div id="collapsePhase1" class="accordion-collapse collapse show" data-bs-parent="#phasesAccordion">
+                        <div class="accordion-body">
+                            Authentication, database, and dashboards for admin, teacher, and student roles.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingPhase2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhase2">
+                            Phase 2: Learning Resources
+                        </button>
+                    </h2>
+                    <div id="collapsePhase2" class="accordion-collapse collapse" data-bs-parent="#phasesAccordion">
+                        <div class="accordion-body">
+                            Upload PDFs, Word docs, PowerPoints, videos, and audio. Organize by department, course, and module.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingPhase3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhase3">
+                            Phase 3: Intelligent Search
+                        </button>
+                    </h2>
+                    <div id="collapsePhase3" class="accordion-collapse collapse" data-bs-parent="#phasesAccordion">
+                        <div class="accordion-body">
+                            Full-text search, OCR for scanned documents, filters, and suggestions.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingPhase4">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhase4">
+                            Phase 4: Teaching Tools
+                        </button>
+                    </h2>
+                    <div id="collapsePhase4" class="accordion-collapse collapse" data-bs-parent="#phasesAccordion">
+                        <div class="accordion-body">
+                            Lesson plans, assignments, quizzes, grading, and attendance tracking.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingPhase5">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhase5">
+                            Phase 5: Student Tools
+                        </button>
+                    </h2>
+                    <div id="collapsePhase5" class="accordion-collapse collapse" data-bs-parent="#phasesAccordion">
+                        <div class="accordion-body">
+                            Progress dashboards, bookmarks, submissions, quiz attempts, and certificates.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingPhase6">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhase6">
+                            Phase 6: AI Features
+                        </button>
+                    </h2>
+                    <div id="collapsePhase6" class="accordion-collapse collapse" data-bs-parent="#phasesAccordion">
+                        <div class="accordion-body">
+                            AI tutor, auto quiz generation, concept explanation, and personalized recommendations.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingPhase7">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhase7">
+                            Phase 7: Administration
+                        </button>
+                    </h2>
+                    <div id="collapsePhase7" class="accordion-collapse collapse" data-bs-parent="#phasesAccordion">
+                        <div class="accordion-body">
+                            Advanced analytics, reports, user management, and system configuration.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingPhase8">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhase8">
+                            Phase 8: Production
+                        </button>
+                    </h2>
+                    <div id="collapsePhase8" class="accordion-collapse collapse" data-bs-parent="#phasesAccordion">
+                        <div class="accordion-body">
+                            Testing, Docker deployment, GitHub Actions CI/CD, security hardening.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-body">
+                    <h5 class="card-title">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('main.home') }}">Home</a></li>
+                        <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                        <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                        <li><a href="https://github.com/Lucky-lad254/TVET-Smart-Learning-Hub" target="_blank">GitHub Repository</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard - TVET Smart Learning Hub{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4"><i class="fas fa-tachometer-alt"></i> Administrator Dashboard</h1>
+    
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-primary text-white">
+                <div class="card-body">
+                    <h6 class="card-title text-white-50">Total Users</h6>
+                    <h2 class="display-6">{{ total_users }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-success text-white">
+                <div class="card-body">
+                    <h6 class="card-title text-white-50">Teachers</h6>
+                    <h2 class="display-6">{{ total_teachers }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-info text-white">
+                <div class="card-body">
+                    <h6 class="card-title text-white-50">Students</h6>
+                    <h2 class="display-6">{{ total_students }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-warning text-white">
+                <div class="card-body">
+                    <h6 class="card-title text-white-50">Administrators</h6>
+                    <h2 class="display-6">{{ total_admins }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Management Options -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-users"></i> User Management</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Manage teachers, students, and administrators.</p>
+                    <button class="btn btn-primary" disabled><i class="fas fa-plus"></i> Add User (Phase 2)</button>
+                    <button class="btn btn-secondary" disabled><i class="fas fa-list"></i> View All Users (Phase 2)</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-book"></i> Course Management</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Create and manage courses and departments.</p>
+                    <button class="btn btn-primary" disabled><i class="fas fa-plus"></i> Create Course (Phase 2)</button>
+                    <button class="btn btn-secondary" disabled><i class="fas fa-list"></i> View Courses (Phase 2)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recent Users -->
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="fas fa-clock"></i> Recently Registered Users</h5>
+        </div>
+        <div class="card-body">
+            {% if recent_users %}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Registered</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in recent_users %}
+                        <tr>
+                            <td>{{ user.fullname }}</td>
+                            <td>{{ user.email }}</td>
+                            <td><span class="badge bg-secondary">{{ user.role }}</span></td>
+                            <td>{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                            <td>
+                                {% if user.is_active %}
+                                <span class="badge bg-success">Active</span>
+                                {% else %}
+                                <span class="badge bg-danger">Inactive</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="text-muted">No users yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
