@@ -1,81 +1,43 @@
+"""Flask application factory.
+
+Creates and configures the Flask application.
+"""
+
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
+from app.extensions import db, login_manager, csrf, migrate
+from app.config import config
 import os
 
-db = SQLAlchemy()
-login_manager = LoginManager()
 
-def create_app():
-    """Application factory function."""
+def create_app(config_name=None):
+    """Create and configure Flask application.
+    
+    Args:
+        config_name: Configuration environment ('development', 'testing', 'production')
+                    Defaults to FLASK_ENV or 'development'
+    
+    Returns:
+        Configured Flask application
+    """
+    if config_name is None:
+        config_name = os.environ.get('FLASK_ENV', 'development')
+    
     app = Flask(__name__)
     
-    # Configuration
-    if os.getenv('FLASK_ENV') == 'production':
-        from app.config import ProductionConfig
-        app.config.from_object(ProductionConfig)
-    else:
-        from app.config import DevelopmentConfig
-        app.config.from_object(DevelopmentConfig)
+    # Load configuration
+    app.config.from_object(config[config_name])
     
     # Initialize extensions
     db.init_app(app)
     login_manager.init_app(app)
-    login_manager.login_view = 'auth.login'
-    login_manager.login_message = 'Please log in to access this page.'
+    csrf.init_app(app)
+    migrate.init_app(app, db)
     
-    # Create database tables
+    # Create upload directory if it doesn't exist
+    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+    
+    # Database context
     with app.app_context():
         db.create_all()
-        from app.models import User, Role
-        
-        # Create default roles if they don't exist
-        if Role.query.count() == 0:
-            admin_role = Role(name='Admin')
-            teacher_role = Role(name='Teacher')
-            student_role = Role(name='Student')
-            db.session.add_all([admin_role, teacher_role, student_role])
-            db.session.commit()
-        
-        # Create test accounts if they don't exist
-        if User.query.count() == 0:
-            from werkzeug.security import generate_password_hash
-            
-            admin = User(
-                fullname='Administrator',
-                email='admin@tvet.edu',
-                password=generate_password_hash('admin123'),
-                role='Admin'
-            )
-            teacher = User(
-                fullname='Sample Teacher',
-                email='teacher@tvet.edu',
-                password=generate_password_hash('teacher123'),
-                role='Teacher'
-            )
-            student = User(
-                fullname='Sample Student',
-                email='student@tvet.edu',
-                password=generate_password_hash('student123'),
-                role='Student'
-            )
-            db.session.add_all([admin, teacher, student])
-            db.session.commit()
-    
-    # Register blueprints
-    from app.auth import auth_bp
-    from app.routes import main_bp
-    from app.dashboard import dashboard_bp
-    from app.errors import errors_bp
-    
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(main_bp)
-    app.register_blueprint(dashboard_bp)
-    app.register_blueprint(errors_bp)
-    
-    @login_manager.user_loader
-    def load_user(user_id):
-        from app.models import User
-        return User.query.get(int(user_id))
     
     return app

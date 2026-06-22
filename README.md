@@ -1,221 +1,243 @@
-# TVET Smart Learning Hub (TSLH)
+# TVET Smart Learning Hub
 
-**A production-ready Learning Management System for TVET institutions.**
+**A professional, scalable Python/Flask application for TVET institutions to manage learning materials, student progress, and educational content.**
 
-TSLH helps teachers teach effectively and enables students to learn independently through organized digital resources, intelligent search, assessments, and AI-assisted learning.
+## Overview
 
----
+The TVET Smart Learning Hub is designed to help Technical and Vocational Education and Training institutions:
 
-## 📋 Phase 1: Project Foundation
+- **Teachers**: Upload, organize, and manage course materials
+- **Students**: Browse, search, and download learning resources
+- **Administrators**: Manage departments, courses, modules, and monitor usage
+- **Data Scientists**: Analyze learning patterns and generate insights
 
-### Current Features
+## Features
 
-✅ **User Authentication**
-- Secure login/logout with password hashing
-- User registration (Teacher & Student roles)
-- Role-based access control
+### ✅ Core Features (Phase 1-2)
 
-✅ **Database**
-- SQLite (development) with SQLAlchemy ORM
-- User & Role models
-- Scalable schema for future phases
+- **User Authentication**: Role-based access control (Admin, Teacher, Student)
+- **Material Management**: Upload PDFs, documents, videos, audio, images
+- **Organization**: Departments → Courses → Modules → Materials
+- **Search Engine**: Full-text search, filters, advanced queries
+- **File Management**: Secure uploads, virus scanning, compression
+- **Download Tracking**: Monitor material popularity and engagement
 
-✅ **Dashboards**
-- Administrator dashboard (user management)
-- Teacher dashboard (resource management tools)
-- Student dashboard (learning interface)
+### 🚀 Upcoming Features (Phase 3+)
 
-✅ **Professional UI**
-- Responsive design with Bootstrap 5
-- Blue & white educational theme
-- Mobile-friendly navigation
+- **AI Tutor**: Smart question answering
+- **Quiz Generator**: Auto-generated assessments
+- **Progress Tracking**: Student learning analytics
+- **Mobile App**: iOS/Android support
+- **Video Streaming**: Adaptive bitrate delivery
+- **Analytics Dashboard**: Usage statistics and insights
 
----
+## Tech Stack
 
-## 🚀 Quick Start
+- **Backend**: Python 3.11+, Flask 2.3
+- **Database**: SQLAlchemy ORM, SQLite (dev), PostgreSQL (prod)
+- **Frontend**: HTML5, Bootstrap 5, JavaScript
+- **Search**: Full-text indexing
+- **Deployment**: Docker, AWS, Heroku-ready
+- **Testing**: Pytest, coverage reporting
 
-### Prerequisites
-- Python 3.8+
-- pip (Python package manager)
+## Quick Start
 
-### Installation
+### 1. Clone Repository
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Lucky-lad254/TVET-Smart-Learning-Hub.git
-   cd TVET-Smart-Learning-Hub
-   ```
+```bash
+git clone https://github.com/Lucky-lad25/TVET-Smart-Learning-Hub.git
+cd TVET-Smart-Learning-Hub
+```
 
-2. **Create a virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+### 2. Set Up Virtual Environment
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+```
 
-4. **Run the application**
-   ```bash
-   python run.py
-   ```
+### 3. Install Dependencies
 
-5. **Open in browser**
-   ```
-   http://localhost:5000
-   ```
+```bash
+pip install -r requirements.txt
+```
 
----
+### 4. Configure Environment
 
-## 👤 Default Test Accounts
+```bash
+cp .env.example .env
+# Edit .env with your settings
+```
 
-After first run, the database auto-creates test accounts:
+### 5. Initialize Database
 
-**Administrator**
-- Email: `admin@tvet.edu`
-- Password: `admin123`
+```bash
+python run.py
+```
 
-**Teacher**
-- Email: `teacher@tvet.edu`
-- Password: `teacher123`
+Then in Flask shell:
 
-**Student**
-- Email: `student@tvet.edu`
-- Password: `student123`
+```bash
+flask shell
+>>> from app.models import Role
+>>> Role.create_default_roles()
+>>> exit()
+```
 
-⚠️ **Change these passwords immediately in production!**
+### 6. Run Application
 
----
+```bash
+python run.py
+```
 
-## 📁 Project Structure
+Visit: **http://localhost:5000**
+
+## Project Structure
 
 ```
 TVET_Smart_Learning_Hub/
 ├── app/
-│   ├── __init__.py              # Flask app factory
+│   ├── __init__.py              # Flask factory
 │   ├── config.py                # Configuration
-│   ├── models.py                # Database models (User, Role)
-│   ├── auth.py                  # Authentication logic
-│   ├── routes.py                # Main routes
-│   ├── forms.py                 # Login & registration forms
-│   ├── decorators.py            # Role-based decorators
-│   ├── dashboard.py             # Dashboard logic
-│   ├── errors.py                # Error handlers
-│   │
-│   ├── templates/
-│   │   ├── base.html            # Base template
-│   │   ├── index.html           # Homepage
-│   │   ├── login.html           # Login page
-│   │   ├── register.html        # Registration page
-│   │   ├── admin.html           # Admin dashboard
-│   │   ├── teacher.html         # Teacher dashboard
-│   │   └── student.html         # Student dashboard
-│   │
-│   └── static/
-│       ├── css/
-│       │   └── style.css        # Main stylesheet
-│       ├── js/
-│       │   └── script.js        # JavaScript functions
-│       └── images/
-│           └── logo.png         # School logo
-│
-├── instance/
-│   └── tvet.db                  # SQLite database (auto-created)
-│
-├── uploads/                     # User uploads (Phase 2)
-│
-├── tests/                       # Unit tests (Phase 8)
-│
-├── run.py                       # Application entry point
-├── requirements.txt             # Python dependencies
+│   ├── extensions.py            # Flask extensions
+│   ├── models/                  # Database models
+│   │   ├── __init__.py
+│   │   ├── role.py
+│   │   ├── user.py
+│   │   ├── department.py
+│   │   ├── course.py
+│   │   ├── module.py
+│   │   ├── material.py
+│   │   └── search_index.py
+│   ├── materials/               # Upload & search
+│   │   ├── __init__.py
+│   │   ├── services.py
+│   │   └── validators.py
+│   ├── templates/               # HTML templates
+│   └── static/                  # CSS, JS, images
+├── uploads/                     # User uploads
+├── tests/                       # Unit tests
+├── docs/                        # Documentation
+├── run.py                       # Entry point
+├── requirements.txt             # Dependencies
 ├── README.md                    # This file
-└── LICENSE                      # MIT License
+└── .env.example                 # Environment template
 ```
 
----
+## Documentation
 
-## 🔐 Security Features
+Detailed documentation is available in the `docs/` folder:
 
-✅ Password hashing with Werkzeug
-✅ Secure session management
-✅ CSRF protection (Flask-WTF)
-✅ Login required decorators
-✅ Role-based authorization
-✅ Input validation on forms
-✅ SQL injection protection (SQLAlchemy ORM)
+- **[ARCHITECTURE.md](docs/ARCHITECTURE.md)** - System design & components
+- **[DEVELOPER_GUIDE.md](docs/DEVELOPER_GUIDE.md)** - How to extend the app
+- **[USER_GUIDE.md](docs/USER_GUIDE.md)** - How to use the app
+- **[DATABASE_SCHEMA.md](docs/DATABASE_SCHEMA.md)** - ER diagram & tables
+- **[API_DOCUMENTATION.md](docs/API_DOCUMENTATION.md)** - API endpoints
+- **[INSTALLATION.md](docs/INSTALLATION.md)** - Detailed setup guide
 
----
+## Roadmap
 
-## 📚 Database Schema (Phase 1)
+| Phase | Focus | Status |
+|-------|-------|--------|
+| 1 | Authentication & Foundation | ✅ Complete |
+| 2 | Materials & Upload System | ✅ Complete |
+| 3 | Search Engine & Indexing | 🚧 In Progress |
+| 4 | Quizzes & Assignments | Planned |
+| 5 | AI Integration | Planned |
+| 6 | Analytics & Reports | Planned |
+| 7 | Mobile Optimization | Planned |
+| 8 | Production Release | Planned |
 
-### Users Table
+## Testing
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage
+pytest --cov=app
+
+# Run specific test file
+pytest tests/test_models.py -v
 ```
-id (Primary Key)
-fullname (String)
-email (Unique)
-password (Hashed)
-role (Admin/Teacher/Student)
-created_at (DateTime)
+
+## Deployment
+
+### Docker
+
+```bash
+docker build -t tvet-hub .
+docker run -p 5000:5000 tvet-hub
 ```
 
-### Roles
-- **Administrator**: Full system access
-- **Teacher**: Manage courses, assignments, grades
-- **Student**: Access learning materials, submit assignments
+### Heroku
 
----
+```bash
+heroku create your-app-name
+git push heroku main
+```
 
-## 🛣️ Development Roadmap
+### AWS
 
-- **Phase 1** ✅ Project Foundation (Complete)
-- **Phase 2** 📋 Learning Resources (Upload PDFs, DOCX, videos)
-- **Phase 3** 📋 Intelligent Search (Full-text search, OCR)
-- **Phase 4** 📋 Teaching Tools (Quizzes, assignments, grading)
-- **Phase 5** 📋 Student Tools (Progress tracking, submissions)
-- **Phase 6** 📋 AI Features (AI tutor, summarizer)
-- **Phase 7** 📋 Administration (Analytics, reports)
-- **Phase 8** 📋 Production (Tests, Docker, deployment)
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed AWS setup.
 
----
+## API Endpoints
 
-## 🤝 Contributing
+### Authentication
+- `POST /auth/login` - User login
+- `POST /auth/register` - User registration
+- `GET /auth/logout` - User logout
 
-Contributions are welcome! Please follow these steps:
+### Materials
+- `POST /materials/upload` - Upload material
+- `GET /materials/browse` - Browse materials
+- `GET /materials/search?q=keyword` - Search materials
+- `GET /materials/material/<id>` - View details
+- `GET /materials/material/<id>/download` - Download file
+
+### Admin
+- `POST /admin/departments` - Create department
+- `POST /admin/courses` - Create course
+- `POST /admin/modules` - Create module
+
+## Security
+
+✅ Password hashing (PBKDF2-SHA256)  
+✅ CSRF protection  
+✅ SQL injection prevention (SQLAlchemy)  
+✅ XSS protection (Jinja2 escaping)  
+✅ File type validation  
+✅ File size limits (100 MB)  
+✅ Role-based authorization  
+✅ Secure session management  
+
+## Contributing
+
+Contributions are welcome! Please:
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/your-feature`)
-3. Commit your changes (`git commit -m 'Add feature'`)
-4. Push to the branch (`git push origin feature/your-feature`)
-5. Open a Pull Request
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit changes: `git commit -am 'Add feature'`
+4. Push to branch: `git push origin feature/your-feature`
+5. Submit a pull request
+
+## License
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+## Support
+
+For support, issues, or questions:
+
+- Create an [Issue](https://github.com/Lucky-lad25/TVET-Smart-Learning-Hub/issues)
+- Check [Discussions](https://github.com/Lucky-lad25/TVET-Smart-Learning-Hub/discussions)
+- Email: support@tvet-hub.example.com
+
+## Acknowledgments
+
+Built with ❤️ for TVET institutions worldwide.
 
 ---
 
-## 📝 License
-
-This project is licensed under the MIT License. See `LICENSE` file for details.
-
----
-
-## 📧 Support
-
-For questions or issues:
-- Open a GitHub Issue
-- Email: support@tvet-lms.edu
-
----
-
-## 👨‍💻 Built with
-
-- **Python 3.12**
-- **Flask** - Web framework
-- **SQLAlchemy** - ORM
-- **Flask-Login** - Authentication
-- **Bootstrap 5** - UI Framework
-- **SQLite** - Database
-
----
-
-**Last Updated:** June 2026
-**Status:** Phase 1 - Stable
+**Last Updated**: June 2026  
+**Version**: 2.0.0-beta
