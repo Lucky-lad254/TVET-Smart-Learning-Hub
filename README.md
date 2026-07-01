@@ -141,8 +141,8 @@ Detailed documentation is available in the `docs/` folder:
 |-------|-------|--------|
 | 1 | Authentication & Foundation | ✅ Complete |
 | 2 | Materials & Upload System | ✅ Complete |
-| 3 | Search Engine & Indexing | 🚧 In Progress |
-| 4 | Quizzes & Assignments | Planned |
+| 3 | Search Engine & Indexing | ✅ Complete |
+| 4 | Quizzes & Assignments | 🚧 In Progress |
 | 5 | AI Integration | Planned |
 | 6 | Analytics & Reports | Planned |
 | 7 | Mobile Optimization | Planned |
